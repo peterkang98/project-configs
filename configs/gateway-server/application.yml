@@ -20,14 +20,12 @@ spring:
               # 예: /v1/product/123 -> /123
               # 주의: ${path}가 스프링 프로퍼티 치환으로 평가되지 않도록 '\${path}' 형태로 이스케이프합니다.
             # 작은따옴표로 감싸면 YAML 파싱 측면에서 안전합니다.
-
-        - id: order-service               # 두 번째 라우트 예시
-          uri: lb://order-service
+        - id: hub-service
+          uri: lb://hub-service
           predicates:
-            - Path=/v1/order/**
+            - Path=/v1/hub/**
           filters:
-            - 'RewritePath=/v1/order/(?<path>.*), /\${path}'
-            # /v1/order/** 요청을 /{path} 형태로 백엔드에 전달
+            - 'RewritePath=/v1/hub/(?<path>.*), /\${path}'
 
 management:
   endpoints:
