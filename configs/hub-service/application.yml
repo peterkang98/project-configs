@@ -6,9 +6,3 @@ message:
   test2: '테스트 메시지2'
 
 message3: '테스트 메시지3'
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: refresh
