@@ -32,6 +32,11 @@ spring:
             baseConfig: default  # 위에서 정의한 기본 설정 상속
             failureRateThreshold: 40  # 기본 설정 오버라이드: 40%로 임계값 낮춤
             waitDurationInOpenState: 20s  # 기본 설정 오버라이드: 20초로 대기 시간 단축
+  rabbitmq:
+    host: localhost                 # RabbitMQ 브로커의 호스트명 또는 IP. 로컬 테스트 시 'localhost' 사용.
+    port: 5672                      # AMQP 포트(기본 5672). 브로커가 다른 포트를 쓰면 해당 포트로 설정.
+    username: ${RABBITMQ_USERNAME}
+    password: ${RABBITMQ_PASSWORD}
 
 resilience4j:
   retry:  # 재시도 설정
