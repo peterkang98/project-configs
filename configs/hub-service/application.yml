@@ -3,3 +3,10 @@ message:
   test2: '테스트 메시지2'
 
 message3: '테스트 메시지3'
+
+
+rabbit:
+  product:
+    exchange: spartahub
+    queue: hub
+    routing-key: product.#
