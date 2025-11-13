@@ -37,6 +37,7 @@ spring:
     port: 5672                      # AMQP 포트(기본 5672). 브로커가 다른 포트를 쓰면 해당 포트로 설정.
     username: ${RABBITMQ_USERNAME}
     password: ${RABBITMQ_PASSWORD}
+    virtual-host: /
 
 resilience4j:
   retry:  # 재시도 설정
