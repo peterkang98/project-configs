@@ -72,7 +72,7 @@ spring:
               - email
         provider:
           keycloak:
-            issuer-uri: "http://localhost:3000/v1/user/authorization/code"
+            issuer-uri: "http://localhost:3300/realms/earlyexpress"
 
 keycloak:
   server-url: http://localhost:3300
