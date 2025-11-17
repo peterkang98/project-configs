@@ -19,6 +19,12 @@ spring:
             - Path=/v1/hub/**
           filters:
             - 'RewritePath=/v1/hub/(?<path>.*), /\${path}'
+        - id: user-service
+          uri: lb://user-service
+          predicates:
+            - Path=/v1/user/**
+          filters:
+            - 'RewritePath=/v1/user/(?<path>.*), /\${path}'
 
 management:
   endpoints:
