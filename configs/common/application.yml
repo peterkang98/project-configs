@@ -54,14 +54,33 @@ spring:
     port: 5672                      # AMQP 포트(기본 5672). 브로커가 다른 포트를 쓰면 해당 포트로 설정.
     username: ${RABBITMQ_USERNAME}
     password: ${RABBITMQ_PASSWORD}
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: "http://localhost:3300/realms/earlyexpress"
+      client:
+        registration:
+          keycloak:
+            client-id: ${KEYCLOAK_CLIENT_ID}
+            client-secret: ${KEYCLOAK_CLIENT_SECRET}
+            authorization-grant-type: authorization_code
+            redirect-uri: "http://localhost:3000/v1/user/authorization/code"
+            scope:
+              - openid
+              - profile
+              - email
+        provider:
+          keycloak:
+            issuer-uri: "http://localhost:3000/v1/user/authorization/code"
 
-  keycloak:
-    server-url: https://keycloak.code-factory.co.kr
-    realm: codefactory
-    client-id: ${KEYCLOAK_CLIENT_ID}
-    client-secret: ${KEYCLOAK_CLIENT_SECRET}
-    admin-username: ${KEYCLOAK_ADMIN_USERNAME}
-    admin-password: ${KEYCLOAK_ADMIN_PASSWORD}
+keycloak:
+  server-url: http://localhost:3000
+  realm: earlyexpress
+  client-id: ${KEYCLOAK_CLIENT_ID}
+  client-secret: ${KEYCLOAK_CLIENT_SECRET}
+  admin-username: ${KEYCLOAK_ADMIN_USERNAME}
+  admin-password: ${KEYCLOAK_ADMIN_PASSWORD}
 
 resilience4j:
   retry:  # 재시도 설정
